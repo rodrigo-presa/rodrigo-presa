@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Banners Colonia Express</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;0,900;1,800;1,900&display=swap" rel="stylesheet">
+<style>
+  :root{ --azul:#0b4a9a; --azul-osc:#06306b; --rojo:#e0262f; --cielo:#cde2f9; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Nunito,sans-serif;background:#eef1f5;padding:30px;display:flex;flex-wrap:wrap;gap:30px;align-items:flex-start}
+  .ad{position:relative;overflow:hidden;color:#fff;background:var(--azul)}
+  .pub{position:absolute;top:6px;right:8px;font-size:8px;letter-spacing:1.4px;font-weight:700;opacity:.75;z-index:5}
+  .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .shade{position:absolute;inset:0}
+  .z{position:relative;z-index:3}
+
+  /* Logo (wordmark) */
+  .logo{display:inline-flex;align-items:center;gap:3px;font-weight:900;font-style:italic;letter-spacing:-.4px;line-height:1}
+  .logo .c{color:var(--azul)} .logo .e{color:var(--rojo)}
+  .logo.neg .c{color:#fff}
+  .logo svg{flex:none}
+
+  /* Piezas de promo con el estilo de su hero */
+  .kicker{display:inline-block;background:var(--rojo);color:#fff;font-weight:900;border-radius:999px;text-transform:uppercase;letter-spacing:.3px}
+  .bubble{position:relative;display:inline-flex;align-items:center;gap:6px;background:#fff;border-radius:999px;color:var(--azul);font-weight:900;line-height:.95}
+  .bubble:after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:8px solid transparent;border-top-color:#fff;border-bottom:0}
+  .bubble i{font-style:italic;color:var(--rojo);display:block}
+  .off{display:flex;align-items:center;font-weight:900;line-height:.8;text-shadow:0 3px 14px rgba(0,30,80,.35)}
+  .off .n{letter-spacing:-3px}
+  .off .p{display:flex;flex-direction:column;line-height:.85;margin-left:4px}
+  .code{display:inline-flex;align-items:center;gap:7px;background:var(--azul);border:1.5px solid rgba(255,255,255,.55);border-radius:999px;font-weight:900;line-height:1}
+  .code small{display:block;font-size:.5em;letter-spacing:.8px;opacity:.85;font-weight:800}
+  .cta{display:inline-block;background:var(--rojo);color:#fff;font-weight:900;border-radius:10px;text-align:center;box-shadow:0 6px 16px rgba(224,38,47,.35)}
+  h2{font-weight:900;line-height:1.02;letter-spacing:-.5px;text-shadow:0 2px 12px rgba(0,30,80,.35)}
+  h2 em{font-style:italic;color:#ffd7a8}
+
+  /* ============ 300x600 · lateral ============ */
+  #half{width:300px;height:600px;border-radius:18px}
+  #half .bg{background-image:url(assets/rio-der.jpg);background-position:center 30%}
+  #half .shade{background:linear-gradient(180deg,rgba(6,48,107,.92) 0%,rgba(11,74,154,.55) 38%,rgba(0,0,0,0) 60%,rgba(6,48,107,.85) 100%)}
+  #half .top{background:#fff;padding:14px 0 12px;text-align:center}
+  #half .top .logo{font-size:25px}
+  #half .body{padding:18px 20px 0;text-align:center}
+  #half .kicker{font-size:11px;padding:5px 12px}
+  #half h2{font-size:31px;margin-top:12px}
+  #half .ship{position:absolute;left:-40px;right:-40px;top:196px;height:170px;background:url(assets/barco.jpg) center/cover;
+              -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 28%,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 28%,#000 72%,transparent 100%)}
+  #half .promo{position:absolute;left:0;right:0;bottom:22px;text-align:center}
+  #half .off{justify-content:center}
+  #half .off .n{font-size:72px}
+  #half .off .p b{font-size:30px} #half .off .p span{font-size:21px}
+  #half .off-sub{font-weight:900;font-size:14px;letter-spacing:.5px;margin-top:4px}
+  #half .code{font-size:16px;padding:6px 14px;margin-top:8px}
+  #half .cta{display:block;margin:12px 20px 0;padding:12px 0;font-size:16px}
+  #half .promo{background:linear-gradient(180deg,transparent,rgba(6,48,107,.55) 30%);padding-top:14px}
+
+  /* ============ 300x250 ============ */
+  #mrec{width:300px;height:250px;border-radius:14px}
+  #mrec .bg{background-image:url(assets/rio-izq.jpg)}
+  #mrec .shade{background:linear-gradient(90deg,rgba(6,48,107,.9) 0%,rgba(11,74,154,.55) 60%,rgba(11,74,154,.2) 100%)}
+  #mrec .ship{position:absolute;right:-60px;bottom:-6px;width:250px;height:80px;background:url(assets/barco.jpg) center/cover;
+              -webkit-mask-image:radial-gradient(ellipse 55% 70% at 50% 60%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 55% 70% at 50% 60%,#000 55%,transparent 100%)}
+  #mrec .in{padding:14px 16px}
+  #mrec .logo{font-size:15px;background:#fff;padding:5px 9px;border-radius:7px}
+  #mrec .kicker{font-size:9px;padding:4px 9px;margin-top:12px}
+  #mrec h2{font-size:22px;margin-top:6px;max-width:220px}
+  #mrec .row{display:flex;align-items:center;gap:10px;margin-top:10px}
+  #mrec .off .n{font-size:46px;letter-spacing:-2px}
+  #mrec .off .p b{font-size:19px} #mrec .off .p span{font-size:13px}
+  #mrec .code{font-size:12px;padding:5px 10px}
+  #mrec .cta{position:absolute;left:16px;bottom:14px;padding:8px 14px;font-size:13px}
+
+  /* ============ 970x250 · billboard ============ */
+  #bill{width:970px;height:250px;border-radius:16px;display:grid;grid-template-columns:470px 1fr}
+  #bill .foto{position:relative;overflow:hidden}
+  #bill .foto .bg{background-image:url(assets/rio-izq.jpg);background-position:center 40%}
+  #bill .foto .ship{position:absolute;left:-10px;right:-40px;bottom:-10px;height:150px;background:url(assets/barco.jpg) center/cover;
+              -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%);mask-image:linear-gradient(180deg,transparent 0,#000 30%)}
+  #bill .foto .shade{background:linear-gradient(90deg,rgba(11,74,154,0) 60%,var(--azul) 100%)}
+  #bill .foto .bubble{position:absolute;top:22px;left:24px;font-size:20px;padding:9px 16px;z-index:3}
+  #bill .txt{padding:26px 34px 22px 10px;display:flex;flex-direction:column;justify-content:center;position:relative}
+  #bill .logo{font-size:18px;background:#fff;padding:7px 11px;border-radius:8px;position:absolute;bottom:18px;left:24px;z-index:3}
+  #bill .kicker{font-size:11px;padding:5px 11px;align-self:flex-start}
+  #bill h2{font-size:36px;margin-top:8px}
+  #bill .row{display:flex;align-items:center;gap:18px;margin-top:14px}
+  #bill .off .n{font-size:64px}
+  #bill .off .p b{font-size:26px} #bill .off .p span{font-size:17px}
+  #bill .code{font-size:16px;padding:7px 14px}
+  #bill .cta{padding:14px 22px;font-size:17px;margin-left:auto;white-space:nowrap}
+
+  /* ============ 728x90 ============ */
+  #leader{width:728px;height:90px;border-radius:12px;display:flex;align-items:center;gap:16px;padding:0 18px 0 0}
+  #leader .foto{position:relative;width:190px;height:100%;flex:none;overflow:hidden}
+  #leader .foto .bg{background:url(assets/barco.jpg) 40% center/cover}
+  #leader .foto .shade{background:linear-gradient(90deg,transparent 50%,var(--azul))}
+  #leader .logo{font-size:13px;background:#fff;padding:4px 7px;border-radius:6px;position:absolute;left:8px;top:8px;z-index:3}
+  #leader h2{font-size:21px;flex:1}
+  #leader h2 small{display:block;font-size:10px;letter-spacing:.6px;color:#ffd7a8;text-transform:uppercase;font-weight:900}
+  #leader .off .n{font-size:44px;letter-spacing:-2px}
+  #leader .off .p b{font-size:18px} #leader .off .p span{font-size:12px}
+  #leader .cta{padding:10px 16px;font-size:14px}
+
+  /* ============ 320x100 · mobile ============ */
+  #mob{width:320px;height:100px;border-radius:12px;display:flex;align-items:center;gap:10px;padding:0 12px 0 0}
+  #mob .foto{position:relative;width:96px;height:100%;flex:none;overflow:hidden}
+  #mob .foto .bg{background:url(assets/barco.jpg) 55% center/cover}
+  #mob .foto .shade{background:linear-gradient(90deg,transparent 40%,var(--azul))}
+  #mob .t{flex:1}
+  #mob .t small{font-size:9px;font-weight:900;color:#ffd7a8;letter-spacing:.5px;text-transform:uppercase}
+  #mob .t b{display:block;font-size:17px;font-weight:900;line-height:1.05}
+  #mob .t span{font-size:10px;font-weight:800;opacity:.9;white-space:nowrap}
+  #mob .cta{padding:8px 10px;font-size:12px;border-radius:8px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute"><symbol id="ast" viewBox="0 0 20 20"><g stroke="#e0262f" stroke-width="2.2" stroke-linecap="round"><path d="M10 2v16M2 10h16M4.3 4.3l11.4 11.4M15.7 4.3L4.3 15.7"/></g></symbol></svg>
+
+<!-- 300x600 -->
+<div class="ad" id="half">
+  <div class="bg"></div><div class="shade"></div>
+  <div class="ship"></div>
+  <div class="z top"><span class="logo"><svg width="14" height="14"><use href="#ast"/></svg><span class="c">colonia</span><span class="e">express</span></span></div>
+  <span class="pub" style="color:#7a8aa3">PUBLICIDAD</span>
+  <div class="z body">
+    <span class="kicker">Día de la Madre · 18/10</span>
+    <h2>Regalale a mamá<br>un día en <em>Colonia</em></h2>
+  </div>
+  <div class="z promo">
+    <div class="off"><span class="n">40</span><span class="p"><b>%</b><span>OFF</span></span></div>
+    <div class="off-sub">PASAJES IDA Y VUELTA</div>
+    <span class="code"><span><small>CÓDIGO</small>COLONIA40</span></span>
+    <span class="cta">Comprá tu pasaje</span>
+  </div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:30px">
+  <!-- 300x250 -->
+  <div class="ad" id="mrec">
+    <div class="bg"></div><div class="shade"></div><div class="ship"></div>
+    <span class="pub">PUBLICIDAD</span>
+    <div class="z in">
+      <span class="logo"><svg width="10" height="10"><use href="#ast"/></svg><span class="c">colonia</span><span class="e">express</span></span><br>
+      <span class="kicker">Día de la Madre</span>
+      <h2>Una escapada de a dos a <em>Colonia</em></h2>
+      <div class="row">
+        <div class="off"><span class="n">40</span><span class="p"><b>%</b><span>OFF</span></span></div>
+        <span class="code"><span><small>CÓDIGO</small>COLONIA40</span></span>
+      </div>
+    </div>
+    <span class="cta z">Comprá tu pasaje</span>
+  </div>
+
+  <!-- 320x100 -->
+  <div class="ad" id="mob">
+    <div class="foto"><div class="bg"></div><div class="shade"></div></div>
+    <span class="pub">PUBLICIDAD</span>
+    <div class="t">
+      <small>Día de la Madre</small>
+      <b>Mamá merece Colonia</b>
+      <span>40% OFF · COLONIA40</span>
+    </div>
+    <span class="cta">Comprar</span>
+  </div>
+</div>
+
+<!-- 970x250 -->
+<div class="ad" id="bill">
+  <div class="foto">
+    <div class="bg"></div><div class="ship"></div><div class="shade"></div>
+    <span class="bubble"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b4a9a" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 13V9M10 2h4M12 2v3"/></svg><span>PROMO<i>express</i></span></span>
+    <span class="logo"><svg width="12" height="12"><use href="#ast"/></svg><span class="c">colonia</span><span class="e">express</span></span>
+  </div>
+  <div class="txt">
+    <span class="pub">PUBLICIDAD</span>
+    <span class="kicker">Especial Día de la Madre · Domingo 18/10</span>
+    <h2>Regalale una escapada, <em>no un objeto.</em></h2>
+    <div class="row">
+      <div class="off"><span class="n">40</span><span class="p"><b>%</b><span>OFF</span></span></div>
+      <span class="code"><span><small>CÓDIGO DE DESCUENTO</small>COLONIA40</span></span>
+      <span class="cta">Comprá tu pasaje</span>
+    </div>
+  </div>
+</div>
+
+<!-- 728x90 -->
+<div class="ad" id="leader">
+  <div class="foto"><div class="bg"></div><div class="shade"></div>
+    <span class="logo"><svg width="9" height="9"><use href="#ast"/></svg><span class="c">colonia</span><span class="e">express</span></span></div>
+  <span class="pub">PUBLICIDAD</span>
+  <h2><small>Día de la Madre · 18/10</small>Regalale a mamá un día en <em>Colonia</em></h2>
+  <div class="off"><span class="n">40</span><span class="p"><b>%</b><span>OFF</span></span></div>
+  <span class="cta">Comprar</span>
+</div>
+
+</body>
+</html>
