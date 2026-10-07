@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Propuesta de pauta – Colonia Express × Conexión con Vos</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,500;1,600&family=Nunito:ital,wght@0,800;0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  @page{size:297mm 210mm;margin:0}
+  :root{--cream:#f7ebe5;--coral:#f0525a;--wine:#5c1a30;--wine-2:#6e1f3a;--rose:#c8344f;--ink:#3b2a30;--muted:#6f6266;--line:#e3d3cc;--azul:#0b4a9a;--rojo:#e0262f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Roboto,sans-serif;color:var(--ink);background:#999}
+  .page{width:297mm;height:210mm;background:var(--cream);position:relative;overflow:hidden;page-break-after:always;padding:16mm 18mm}
+  .page:last-child{page-break-after:auto}
+  .foot{position:absolute;left:18mm;right:18mm;bottom:9mm;display:flex;justify-content:space-between;font-size:9pt;color:var(--muted);border-top:1px solid var(--line);padding-top:3mm}
+  .eyebrow{font-size:9pt;font-weight:700;letter-spacing:2px;color:var(--rose);text-transform:uppercase}
+  h2{font-family:"Playfair Display",serif;font-size:28pt;color:var(--wine);line-height:1.1;margin:2mm 0 6mm}
+  h2 i{font-weight:500;color:var(--coral)}
+  p{font-size:11.5pt;line-height:1.5}
+  .cx{font-family:Nunito,sans-serif;font-weight:900;font-style:italic;letter-spacing:-.3px}
+  .cx .c{color:var(--azul)} .cx .e{color:var(--rojo)}
+  .vos{font-family:"Playfair Display",serif;font-style:italic;color:var(--coral)}
+
+  /* Portada */
+  .cover{padding:0;display:grid;grid-template-columns:1.05fr 1fr;background:var(--wine)}
+  .cover .l{padding:20mm 18mm;color:#fff;display:flex;flex-direction:column}
+  .cover .logos{display:flex;align-items:center;gap:6mm;background:#fff;border-radius:4mm;padding:4mm 6mm;align-self:flex-start}
+  .cover .logos .vos{font-size:22pt;line-height:1}
+  .cover .logos small{font-size:7pt;letter-spacing:1.5px;color:#2c2226;display:block}
+  .cover .logos .x{color:#b9a9ad;font-size:14pt}
+  .cover .logos .cx{font-size:17pt}
+  .cover .eyebrow{color:#ffb3bd;margin-top:auto}
+  .cover h1{font-family:"Playfair Display",serif;font-size:38pt;line-height:1.05;margin:3mm 0 5mm}
+  .cover h1 i{font-weight:500;color:#ffb3bd}
+  .cover p{opacity:.85;max-width:120mm}
+  .cover .meta{display:flex;gap:4mm;margin-top:8mm}
+  .cover .meta div{border:1px solid rgba(255,255,255,.3);border-radius:3mm;padding:3mm 4mm;font-size:9pt}
+  .cover .meta b{display:block;font-size:11pt}
+  .cover .r{background:url(assets/portal-desktop-top.jpg) center 18%/cover;position:relative}
+  .cover .r:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--wine) 0,rgba(92,26,48,0) 18%)}
+
+  /* Columnas */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12mm}
+  .card{background:#fff;border:1px solid var(--line);border-radius:4mm;padding:6mm}
+  .card h4{font-size:12.5pt;color:var(--wine);margin-bottom:2mm}
+  .card p{font-size:10.5pt;color:var(--muted)}
+  .stack{display:grid;gap:4mm}
+  .num{display:inline-grid;place-items:center;width:8mm;height:8mm;border-radius:50%;background:var(--wine);color:#fff;font-weight:700;font-size:10pt;margin-bottom:3mm}
+  .quote{background:var(--wine);color:#fff;border-radius:4mm;padding:8mm;display:flex;flex-direction:column;justify-content:center}
+  .quote .q{font-family:"Playfair Display",serif;font-size:24pt;line-height:1.15}
+  .quote .q i{color:#ffb3bd;font-weight:500}
+  .quote p{opacity:.85;margin-top:5mm;font-size:10.5pt}
+  .quote .pl{display:flex;gap:3mm;margin-top:6mm;flex-wrap:wrap}
+  .quote .pl span{background:rgba(255,255,255,.12);border-radius:99px;padding:1.5mm 4mm;font-size:9pt}
+
+  /* Piezas */
+  .pieces{display:grid;grid-template-columns:62mm 1fr;gap:8mm;align-items:start}
+  .pieces img{border-radius:3mm;box-shadow:0 3mm 8mm rgba(11,74,154,.18);display:block}
+  .cap{font-size:8.5pt;font-weight:700;letter-spacing:1px;color:var(--muted);margin:2.5mm 0 0;text-transform:uppercase}
+  .pieces .rs{display:grid;gap:6mm}
+  .row2{display:flex;gap:7mm;align-items:flex-start}
+
+  /* Mockups */
+  .mock{display:grid;grid-template-columns:1fr 62mm;gap:9mm;align-items:start}
+  .browser{border-radius:3mm;overflow:hidden;box-shadow:0 4mm 12mm rgba(60,20,30,.18);background:#fff}
+  .browser .bar{background:#e9dcd5;padding:2mm 3mm;display:flex;gap:1.5mm;align-items:center}
+  .browser .bar i{width:2.4mm;height:2.4mm;border-radius:50%;background:#cdb9b0}
+  .browser .bar span{margin-left:3mm;background:#fff;border-radius:2mm;padding:.8mm 3mm;font-size:7pt;color:var(--muted)}
+  .browser .shot{height:122mm;background:url(assets/portal-desktop-top.jpg) 0 -52mm/100% auto no-repeat}
+  .phone{width:62mm;height:128mm;border-radius:8mm;background:#1b1418;padding:2.5mm;box-shadow:0 4mm 12mm rgba(60,20,30,.25)}
+  .phone div{width:100%;height:100%;border-radius:6mm;background:url(assets/portal-celular.jpg) top center/100% auto no-repeat}
+  .legend{display:grid;gap:2mm;margin-top:5mm}
+  .legend div{font-size:9.5pt;display:flex;gap:2.5mm;align-items:baseline}
+  .legend b{display:inline-grid;place-items:center;min-width:5.5mm;height:5.5mm;border-radius:50%;background:var(--azul);color:#fff;font-size:8pt}
+
+  /* Paquetes */
+  .packs{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+  .pack{background:#fff;border:1px solid var(--line);border-radius:4mm;padding:9mm 7mm;min-height:105mm;display:flex;flex-direction:column;position:relative}
+  .pack.best{border:2px solid var(--wine);box-shadow:0 4mm 12mm rgba(92,26,48,.15)}
+  .pack .tag{position:absolute;top:-3.2mm;left:6mm;background:var(--wine);color:#fff;font-size:8pt;font-weight:700;letter-spacing:1px;border-radius:99px;padding:1mm 3.5mm}
+  .pack h3{font-family:"Playfair Display",serif;font-size:18pt;color:var(--wine)}
+  .pack .sub{font-size:9.5pt;color:var(--muted);margin:1mm 0 4mm}
+  .pack .price{font-size:26pt;font-weight:900;color:var(--ink)}
+  .pack .price small{font-size:10pt;font-weight:500;color:var(--muted)}
+  .pack ul{list-style:none;margin-top:4mm;display:grid;gap:2mm}
+  .pack li{font-size:11pt;padding-left:5mm;position:relative}
+  .pack li:before{content:"✓";position:absolute;left:0;color:var(--rose);font-weight:900}
+  .note{font-size:9pt;color:var(--muted);margin-top:5mm}
+
+  /* Calendario + pasos */
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;margin-top:2mm}
+  .tl{background:#fff;border:1px solid var(--line);border-radius:3mm;padding:4mm}
+  .tl b{display:block;font-size:10pt;color:var(--rose)}
+  .tl span{font-size:10pt}
+  .steps{display:grid;gap:6mm}
+  .step{display:flex;gap:4mm;align-items:flex-start}
+  .step .num{flex:none;margin:0}
+  .step p{font-size:11.5pt}
+  .contact{background:var(--wine);color:#fff;border-radius:4mm;padding:10mm;min-height:85mm;display:flex;flex-direction:column;justify-content:space-between}
+  .contact .vos{font-size:30pt;color:#ffb3bd}
+  .contact h4{font-family:"Playfair Display",serif;font-size:20pt;margin:3mm 0}
+  .contact p{opacity:.9;font-size:10.5pt}
+  .contact .wa{display:inline-flex;align-items:center;gap:3mm;background:#25d366;color:#fff;font-weight:700;border-radius:99px;padding:3mm 6mm;margin-top:6mm;align-self:flex-start}
+</style>
+</head>
+<body>
+
+<!-- 1 · Portada -->
+<section class="page cover">
+  <div class="l">
+    <div class="logos">
+      <span><small>CONEXIÓN CON</small><span class="vos">Vos</span></span>
+      <span class="x">×</span>
+      <span class="cx">✳<span class="c">colonia</span><span class="e">express</span></span>
+    </div>
+    <div class="eyebrow">Propuesta de pauta publicitaria</div>
+    <h1>Regalale una escapada, <i>no un objeto.</i></h1>
+    <p>Campaña de Colonia Express en la Edición Especial Día de la Madre de Conexión con Vos, dentro de la sección Escapadas &amp; Travel.</p>
+    <div class="meta">
+      <div><b>7 → 18 de octubre</b>Vigencia</div>
+      <div><b>Escapadas &amp; Travel</b>Sección + Home</div>
+      <div><b>Desktop + mobile</b>Formatos</div>
+    </div>
+  </div>
+  <div class="r"></div>
+</section>
+
+<!-- 2 · Oportunidad -->
+<section class="page">
+  <div class="eyebrow">La oportunidad</div>
+  <h2>El regalo del Día de la Madre <i>cruza el río</i></h2>
+  <div class="two">
+    <div class="stack">
+      <div class="card"><span class="num">1</span><h4>Una edición pensada para regalar experiencias</h4><p>La edición especial de Conexión con Vos invita a regalar planes y no objetos. Colonia Express es la respuesta directa: un día en Colonia, de a dos, a poco más de una hora de Buenos Aires.</p></div>
+      <div class="card"><span class="num">2</span><h4>Una audiencia que busca escapadas</h4><p>Conexión con Vos es un portal de estilo de vida: bienestar, moda, gastronomía y viajes. Sus lectoras y lectores planifican salidas y regalos, justo en el momento de decidir.</p></div>
+      <div class="card"><span class="num">3</span><h4>Contexto editorial, no solo un banner</h4><p>Los avisos conviven con una nota patrocinada que cuenta cómo pasar 24 horas en Colonia con mamá. El mensaje llega como recomendación, no como interrupción.</p></div>
+    </div>
+    <div class="quote">
+      <div class="q">“Regalale a mamá <i>un día en Colonia</i>.”</div>
+      <p>Concepto creativo: unimos el titular de la edición especial con la promo vigente de Colonia Express. El lector pasa de la inspiración a la compra en un clic.</p>
+      <div class="pl"><span>40% OFF ida y vuelta</span><span>Código COLONIA40</span><span>Domingo 18/10</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Conexión con Vos × Colonia Express</span><span>2</span></div>
+</section>
+
+<!-- 3 · Piezas -->
+<section class="page">
+  <div class="eyebrow">Las piezas</div>
+  <h2>Cinco formatos con la <i>identidad de Colonia Express</i></h2>
+  <div class="pieces">
+    <div><img src="png/colonia-express_300x600.png" style="width:62mm"><div class="cap">Lateral · 300×600</div></div>
+    <div class="rs">
+      <div><img src="png/colonia-express_970x250.png" style="width:100%"><div class="cap">Billboard · 970×250</div></div>
+      <div class="row2">
+        <div><img src="png/colonia-express_300x250.png" style="width:56mm"><div class="cap">Rectángulo · 300×250</div></div>
+        <div style="flex:1;display:grid;gap:6mm">
+          <div><img src="png/colonia-express_728x90.png" style="width:100%"><div class="cap">Horizontal · 728×90</div></div>
+          <div><img src="png/colonia-express_320x100.png" style="width:62mm"><div class="cap">Mobile sticky · 320×100</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Conexión con Vos × Colonia Express</span><span>3</span></div>
+</section>
+
+<!-- 4 · Cómo se ve -->
+<section class="page">
+  <div class="eyebrow">Así se ve en el portal</div>
+  <h2>Presencia en <i>cada scroll</i></h2>
+  <div class="mock">
+    <div>
+      <div class="browser"><div class="bar"><i></i><i></i><i></i><span>conexionconvos.com/escapadas-travel</span></div><div class="shot"></div></div>
+    </div>
+    <div>
+      <div class="phone"><div></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>① Billboard bajo el destacado · ② Lateral fijo · ③ Nota patrocinada · ④ Rectángulo entre notas · ⑤ Sticky en celulares</span><span>4</span></div>
+</section>
+
+<!-- 5 · Paquetes -->
+<section class="page">
+  <div class="eyebrow">Paquetes</div>
+  <h2>Elegí el nivel de <i>presencia</i></h2>
+  <div class="packs">
+    <div class="pack">
+      <h3>Presencia</h3><div class="sub">Visibilidad constante en todo el portal</div>
+      <div class="price">USD 180 <small>/ 12 días</small></div>
+      <ul><li>Lateral 300×600 en todas las secciones</li><li>Sticky mobile 320×100</li><li>Link a la compra con código COLONIA40</li></ul>
+    </div>
+    <div class="pack best">
+      <span class="tag">RECOMENDADO</span>
+      <h3>Destacado</h3><div class="sub">Protagonismo en la edición especial</div>
+      <div class="price">USD 320 <small>/ 12 días</small></div>
+      <ul><li>Todo lo del paquete Presencia</li><li>Billboard 970×250 bajo el destacado de Escapadas &amp; Travel</li><li>Rectángulo 300×250 entre notas</li><li>Banner 728×90</li></ul>
+    </div>
+    <div class="pack">
+      <h3>Premium</h3><div class="sub">Campaña completa con contenido</div>
+      <div class="price">USD 480 <small>/ 12 días</small></div>
+      <ul><li>Todo lo del paquete Destacado</li><li>Nota patrocinada “24 horas en Colonia con mamá”</li><li>Publicación en redes de Conexión con Vos</li><li>Informe de clics al cierre</li></ul>
+    </div>
+  </div>
+  <p class="note">Valores de referencia en dólares estadounidenses, sin impuestos. Diseño de las piezas incluido. Sujeto a disponibilidad de espacios.</p>
+  <div class="foot"><span>Conexión con Vos × Colonia Express</span><span>5</span></div>
+</section>
+
+<!-- 6 · Cronograma y contacto -->
+<section class="page">
+  <div class="eyebrow">Cronograma y próximos pasos</div>
+  <h2>Listos para salir <i>esta semana</i></h2>
+  <div class="timeline">
+    <div class="tl"><b>Hoy · 7/10</b><span>Envío de propuesta</span></div>
+    <div class="tl"><b>8–9/10</b><span>Aprobación de piezas y código</span></div>
+    <div class="tl"><b>10/10</b><span>Campaña online</span></div>
+    <div class="tl"><b>18/10 · Día de la Madre</b><span>Cierre e informe</span></div>
+  </div>
+  <div class="two" style="margin-top:8mm">
+    <div class="steps">
+      <div class="step"><span class="num">1</span><p><b>Elegir el paquete</b> y confirmar fechas de salida.</p></div>
+      <div class="step"><span class="num">2</span><p><b>Validar el código</b> COLONIA40 para la campaña, o asignar uno exclusivo para medir las ventas que llegan desde el portal.</p></div>
+      <div class="step"><span class="num">3</span><p><b>Enviar logo y fotos en alta resolución</b> para la versión final de las piezas.</p></div>
+      <div class="step"><span class="num">4</span><p><b>Aprobar las piezas</b>: las publicamos en 24 horas.</p></div>
+    </div>
+    <div class="contact">
+      <div><span class="vos">Vos</span><h4>Hablemos</h4><p>Conexión con Vos · Portal internacional de estilo de vida<br>conexionconvos.com · Sección Publicidad</p></div>
+      <span class="wa">💬 ¿Querés anunciar? Escribinos por WhatsApp</span>
+    </div>
+  </div>
+  <div class="foot"><span>Conexión con Vos × Colonia Express</span><span>6</span></div>
+</section>
+
+</body>
+</html>
