@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colonia Express – Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2545; --navy-2:#13315c; --sea:#1f6feb; --sky:#e8f1fb;
+    --sun:#ff7a2f; --sun-2:#ff9a5c; --ink:#14213d; --muted:#5b6b82;
+    --bg:#f6f9fc; --card:#ffffff; --line:#dfe7f1; --ok:#18a058;
+    --radius:16px; --shadow:0 10px 30px rgba(11,37,69,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  .badge-mock{background:#fff4ec;color:#a54a14;font-size:12px;text-align:center;padding:6px 16px;border-bottom:1px solid #ffd9c2}
+
+  /* Header */
+  header{background:var(--navy);color:#fff;position:sticky;top:0;z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.3px}
+  .logo-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--sun),var(--sun-2));display:grid;place-items:center}
+  .logo span em{font-style:normal;color:var(--sun-2)}
+  .menu{display:flex;gap:26px;font-size:15px;opacity:.9}
+  .menu a:hover{color:var(--sun-2)}
+  .nav-actions{display:flex;gap:10px;align-items:center}
+  .btn{border:0;cursor:pointer;font:inherit;font-weight:700;border-radius:12px;padding:12px 20px;transition:.15s}
+  .btn-sun{background:var(--sun);color:#fff}
+  .btn-sun:hover{background:#f0661a}
+  .btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+  .lang{font-size:14px;opacity:.8}
+
+  /* Hero */
+  .hero{position:relative;color:#fff;padding:70px 0 150px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(11,37,69,.15),rgba(11,37,69,.75)),
+               linear-gradient(160deg,#1b4f8a 0%,#2f80c8 45%,#ffb27a 100%)}
+  .hero svg.waves{position:absolute;bottom:0;left:0;width:100%;height:120px}
+  .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-1px;max-width:640px}
+  .hero p{font-size:18px;opacity:.92;max-width:520px;margin-top:14px}
+  .hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .tag{background:rgba(255,255,255,.16);backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.25);padding:6px 12px;border-radius:999px;font-size:13px}
+  .ship{position:absolute;right:6%;bottom:70px;width:min(420px,40vw);opacity:.95}
+
+  /* Booking */
+  .booking{position:relative;margin-top:-110px;z-index:5}
+  .book-card{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:22px}
+  .trip-type{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;font-weight:600;font-size:14px;cursor:pointer;color:var(--muted)}
+  .chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
+  .fields{display:grid;grid-template-columns:1.2fr auto 1.2fr 1fr 1fr 1fr auto;gap:10px;align-items:end}
+  .field label{display:block;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+  .field select,.field input{width:100%;font:inherit;font-weight:600;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+  .swap{width:44px;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--sky);cursor:pointer;font-size:18px;color:var(--sea)}
+  .pax{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:12px;padding:6px 8px;background:#fff}
+  .pax button{width:32px;height:32px;border-radius:8px;border:0;background:var(--sky);color:var(--sea);font-size:18px;cursor:pointer}
+  .pax b{min-width:20px;text-align:center}
+  .book-foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  .check{display:flex;gap:8px;align-items:center}
+  .check input{accent-color:var(--sun);width:16px;height:16px}
+
+  /* Sections */
+  section{padding:64px 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px;gap:16px;flex-wrap:wrap}
+  .sec-head h2{font-size:30px;letter-spacing:-.5px}
+  .sec-head p{color:var(--muted)}
+  .link{color:var(--sea);font-weight:700}
+
+  .routes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .route{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);transition:.2s}
+  .route:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .route-img{height:150px;position:relative}
+  .route-img .pill{position:absolute;top:12px;left:12px;background:#fff;color:var(--navy);font-weight:700;font-size:12px;padding:5px 10px;border-radius:999px}
+  .route-body{padding:18px}
+  .route-body h3{font-size:18px;display:flex;align-items:center;gap:8px}
+  .meta{display:flex;gap:14px;color:var(--muted);font-size:14px;margin:8px 0 14px}
+  .price-row{display:flex;justify-content:space-between;align-items:center}
+  .price small{display:block;color:var(--muted);font-size:12px}
+  .price b{font-size:22px}
+  .btn-sm{padding:9px 14px;font-size:14px;border-radius:10px;background:var(--sky);color:var(--sea)}
+
+  .promo{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+  .promo-main{border-radius:20px;padding:34px;color:#fff;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 55%,#1f6feb 100%);position:relative;overflow:hidden}
+  .promo-main h3{font-size:30px;line-height:1.15;max-width:380px}
+  .promo-main p{opacity:.85;margin:10px 0 22px;max-width:380px}
+  .promo-main .big{position:absolute;right:28px;bottom:10px;font-size:110px;font-weight:800;opacity:.12;letter-spacing:-4px}
+  .promo-side{display:grid;gap:18px}
+  .mini{border-radius:20px;padding:22px;background:#fff;border:1px solid var(--line);display:flex;gap:16px;align-items:center}
+  .mini .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:24px;flex:none}
+  .mini h4{font-size:17px}
+  .mini p{color:var(--muted);font-size:14px}
+
+  .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .feat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .feat .ico{font-size:26px;margin-bottom:10px}
+  .feat h4{font-size:16px;margin-bottom:4px}
+  .feat p{color:var(--muted);font-size:14px}
+
+  .schedule{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+  .schedule-row{display:grid;grid-template-columns:1fr 1.5fr 1fr 1fr auto;gap:12px;align-items:center;padding:16px 22px;border-top:1px solid var(--line)}
+  .schedule-row:first-child{border-top:0;background:var(--sky);font-size:12px;font-weight:700;text-transform:uppercase;color:var(--muted);letter-spacing:.4px}
+  .time{font-weight:800;font-size:18px}
+  .seats{font-size:13px;font-weight:700}
+  .seats.ok{color:var(--ok)} .seats.low{color:#d9480f}
+
+  .app{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--navy);color:#fff;border-radius:24px;padding:40px;overflow:hidden}
+  .app h2{font-size:32px;letter-spacing:-.5px}
+  .app p{opacity:.85;margin:12px 0 22px}
+  .stores{display:flex;gap:10px;flex-wrap:wrap}
+  .store{background:#000;border-radius:10px;padding:10px 16px;font-size:13px;line-height:1.2;border:1px solid #333}
+  .store b{display:block;font-size:16px}
+  .phone{width:240px;height:440px;margin:0 auto;border-radius:36px;background:#0a0f1c;padding:12px;box-shadow:0 30px 60px rgba(0,0,0,.4)}
+  .screen{width:100%;height:100%;border-radius:26px;background:var(--bg);overflow:hidden;color:var(--ink)}
+  .screen-top{background:linear-gradient(135deg,var(--sea),var(--navy));color:#fff;padding:22px 16px 40px}
+  .screen-top small{opacity:.8}
+  .ticket{background:#fff;margin:-26px 12px 0;border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+  .ticket-route{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:20px}
+  .ticket-route span{font-size:11px;color:var(--muted);display:block;font-weight:600}
+  .qr{margin:14px auto 0;width:110px;height:110px;background:
+      repeating-linear-gradient(90deg,#14213d 0 6px,transparent 6px 10px),
+      repeating-linear-gradient(0deg,#14213d 0 6px,transparent 6px 11px);
+      border:8px solid #fff;outline:1px solid var(--line);border-radius:8px;opacity:.85}
+
+  footer{background:#071a33;color:#c9d6e8;padding:50px 0 24px;margin-top:40px}
+  .foot{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:30px}
+  .foot h5{color:#fff;font-size:15px;margin-bottom:12px}
+  .foot li{list-style:none;margin:6px 0;font-size:14px;opacity:.8}
+  .copy{border-top:1px solid rgba(255,255,255,.1);margin-top:30px;padding-top:18px;font-size:13px;opacity:.6;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--navy);color:#fff;padding:14px 20px;border-radius:12px;box-shadow:var(--shadow);transition:.3s;font-weight:600;z-index:50;max-width:calc(100% - 32px)}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:980px){
+    .fields{grid-template-columns:1fr auto 1fr;}
+    .fields .f-date,.fields .f-pax{grid-column:span 1}
+    .fields .f-btn{grid-column:1/-1}
+    .routes{grid-template-columns:1fr 1fr}
+    .features{grid-template-columns:1fr 1fr}
+    .promo,.app{grid-template-columns:1fr}
+    .menu{display:none}
+    .ship{display:none}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    .fields{grid-template-columns:1fr}
+    .swap{width:100%;height:38px}
+    .routes,.features{grid-template-columns:1fr}
+    .schedule-row{grid-template-columns:1fr 1fr;row-gap:4px}
+    .schedule-row:first-child{display:none}
+    .foot{grid-template-columns:1fr 1fr}
+    .nav-actions .btn-ghost,.lang{display:none}
+    .app{padding:28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="badge-mock">Mockup conceptual con fines de diseño · No es el sitio oficial de Colonia Express · Precios y horarios de ejemplo</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">
+      <div class="logo-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3 15l2 4h14l2-4H3z"/><path d="M6 15V9h12v6"/><path d="M12 9V4"/><path d="M2 21c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></svg>
+      </div>
+      <span>Colonia <em>Express</em></span>
+    </a>
+    <nav class="menu">
+      <a href="#rutas">Destinos</a>
+      <a href="#horarios">Horarios</a>
+      <a href="#promos">Promociones</a>
+      <a href="#">Paquetes</a>
+      <a href="#">Ayuda</a>
+    </nav>
+    <div class="nav-actions">
+      <span class="lang">ES ▾</span>
+      <button class="btn btn-ghost">Mi reserva</button>
+      <button class="btn btn-sun" onclick="document.getElementById('buscar').scrollIntoView({behavior:'smooth'})">Comprar</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Cruzá el Río de la Plata<br>en poco más de una hora</h1>
+    <p>Buenos Aires ⇄ Colonia del Sacramento y conexiones a Montevideo y Punta del Este. Viajá con tu auto o sin él.</p>
+    <div class="hero-tags">
+      <span class="tag">⛴ Buques rápidos</span>
+      <span class="tag">🚗 Viajá con tu vehículo</span>
+      <span class="tag">🐶 Pet friendly</span>
+      <span class="tag">📱 Embarque con QR</span>
+    </div>
+  </div>
+  <svg class="ship" viewBox="0 0 400 140" fill="none">
+    <path d="M20 95 L380 95 L345 128 L55 128 Z" fill="#fff"/>
+    <path d="M70 95 L90 60 L300 60 L330 95 Z" fill="#e8f1fb"/>
+    <rect x="120" y="40" width="150" height="22" rx="6" fill="#fff"/>
+    <g fill="#0b2545">
+      <rect x="100" y="70" width="18" height="12" rx="3"/><rect x="126" y="70" width="18" height="12" rx="3"/>
+      <rect x="152" y="70" width="18" height="12" rx="3"/><rect x="178" y="70" width="18" height="12" rx="3"/>
+      <rect x="204" y="70" width="18" height="12" rx="3"/><rect x="230" y="70" width="18" height="12" rx="3"/>
+      <rect x="256" y="70" width="18" height="12" rx="3"/>
+    </g>
+    <path d="M30 110 L370 110" stroke="#ff7a2f" stroke-width="5"/>
+  </svg>
+  <svg class="waves" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path d="M0,64 C240,110 480,10 720,50 C960,90 1200,20 1440,60 L1440,120 L0,120 Z" fill="#f6f9fc"/>
+  </svg>
+</div>
+
+<!-- Buscador -->
+<div class="wrap booking" id="buscar">
+  <div class="book-card">
+    <div class="trip-type" id="tripType">
+      <button class="chip active" data-type="ida-vuelta">Ida y vuelta</button>
+      <button class="chip" data-type="ida">Solo ida</button>
+      <button class="chip" data-type="auto">Con vehículo</button>
+      <button class="chip" data-type="paquete">Barco + Hotel</button>
+    </div>
+    <div class="fields">
+      <div class="field">
+        <label for="origen">Origen</label>
+        <select id="origen">
+          <option>Buenos Aires</option>
+          <option>Colonia del Sacramento</option>
+          <option>Montevideo</option>
+          <option>Punta del Este</option>
+        </select>
+      </div>
+      <button class="swap" id="swap" title="Invertir">⇄</button>
+      <div class="field">
+        <label for="destino">Destino</label>
+        <select id="destino">
+          <option>Colonia del Sacramento</option>
+          <option>Buenos Aires</option>
+          <option>Montevideo</option>
+          <option>Punta del Este</option>
+        </select>
+      </div>
+      <div class="field f-date">
+        <label for="ida">Ida</label>
+        <input type="date" id="ida">
+      </div>
+      <div class="field f-date" id="vueltaField">
+        <label for="vuelta">Vuelta</label>
+        <input type="date" id="vuelta">
+      </div>
+      <div class="field f-pax">
+        <label>Pasajeros</label>
+        <div class="pax">
+          <button type="button" id="paxMinus">−</button><b id="paxN">2</b><button type="button" id="paxPlus">+</button>
+        </div>
+      </div>
+      <div class="field f-btn">
+        <label>&nbsp;</label>
+        <button class="btn btn-sun" id="search" style="width:100%;height:46px">Buscar viajes</button>
+      </div>
+    </div>
+    <div class="book-foot">
+      <label class="check"><input type="checkbox"> Viajo con mascota</label>
+      <span>💳 Hasta 6 cuotas · Precio final en ARS, UYU o USD</span>
+    </div>
+  </div>
+</div>
+
+<!-- Rutas -->
+<section id="rutas">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Destinos populares</h2><p>Elegí tu próxima escapada al otro lado del río.</p></div>
+      <a class="link" href="#">Ver todos →</a>
+    </div>
+    <div class="routes">
+      <article class="route">
+        <div class="route-img" style="background:linear-gradient(135deg,#f2b880,#c96d3a 60%,#7a3b1f)"><span class="pill">Más elegido</span></div>
+        <div class="route-body">
+          <h3>Buenos Aires → Colonia</h3>
+          <div class="meta"><span>⏱ 1 h 15 min</span><span>⛴ Directo</span></div>
+          <div class="price-row">
+            <div class="price"><small>Desde</small><b>USD 39</b></div>
+            <button class="btn btn-sm">Ver horarios</button>
+          </div>
+        </div>
+      </article>
+      <article class="route">
+        <div class="route-img" style="background:linear-gradient(135deg,#7fb3e6,#2f6fb5 60%,#173c6b)"><span class="pill">Barco + Bus</span></div>
+        <div class="route-body">
+          <h3>Buenos Aires → Montevideo</h3>
+          <div class="meta"><span>⏱ 3 h 45 min</span><span>🚌 Bus incluido</span></div>
+          <div class="price-row">
+            <div class="price"><small>Desde</small><b>USD 55</b></div>
+            <button class="btn btn-sm">Ver horarios</button>
+          </div>
+        </div>
+      </article>
+      <article class="route">
+        <div class="route-img" style="background:linear-gradient(135deg,#9fe3d6,#2aa59a 60%,#14615c)"><span class="pill">Temporada</span></div>
+        <div class="route-body">
+          <h3>Buenos Aires → Punta del Este</h3>
+          <div class="meta"><span>⏱ 5 h 30 min</span><span>🚌 Bus incluido</span></div>
+          <div class="price-row">
+            <div class="price"><small>Desde</small><b>USD 72</b></div>
+            <button class="btn btn-sm">Ver horarios</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Promos -->
+<section id="promos" style="padding-top:0">
+  <div class="wrap">
+    <div class="promo">
+      <div class="promo-main">
+        <h3>Escapada de fin de semana a Colonia</h3>
+        <p>Barco ida y vuelta + 1 noche de hotel en el casco histórico. Ideal para dos.</p>
+        <button class="btn btn-sun">Ver paquete</button>
+        <div class="big">-25%</div>
+      </div>
+      <div class="promo-side">
+        <div class="mini">
+          <div class="ico" style="background:#fff1e8">🚗</div>
+          <div><h4>Tu auto viaja con vos</h4><p>Bodega para vehículos y motos en todas las salidas.</p></div>
+        </div>
+        <div class="mini">
+          <div class="ico" style="background:#e8f1fb">🎓</div>
+          <div><h4>Tarifa jubilados y estudiantes</h4><p>Descuento presentando credencial al embarcar.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Horarios -->
+<section id="horarios" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Próximas salidas</h2><p>Buenos Aires → Colonia · hoy</p></div>
+      <a class="link" href="#">Calendario completo →</a>
+    </div>
+    <div class="schedule">
+      <div class="schedule-row"><span>Salida</span><span>Servicio</span><span>Duración</span><span>Disponibilidad</span><span></span></div>
+      <div class="schedule-row"><span class="time">08:30</span><span>Buque rápido · Turista</span><span>1 h 15 min</span><span class="seats ok">● Disponible</span><button class="btn btn-sm">USD 39</button></div>
+      <div class="schedule-row"><span class="time">12:00</span><span>Buque rápido · Turista</span><span>1 h 15 min</span><span class="seats low">● Últimos 8 lugares</span><button class="btn btn-sm">USD 45</button></div>
+      <div class="schedule-row"><span class="time">16:30</span><span>Buque rápido · Business</span><span>1 h 15 min</span><span class="seats ok">● Disponible</span><button class="btn btn-sm">USD 62</button></div>
+      <div class="schedule-row"><span class="time">20:00</span><span>Buque rápido · Turista</span><span>1 h 15 min</span><span class="seats ok">● Disponible</span><button class="btn btn-sm">USD 39</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- Beneficios -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>¿Por qué viajar con nosotros?</h2></div></div>
+    <div class="features">
+      <div class="feat"><div class="ico">⚡</div><h4>Rápido</h4><p>El cruce más corto entre Argentina y Uruguay.</p></div>
+      <div class="feat"><div class="ico">🛂</div><h4>Migraciones en puerto</h4><p>Trámite unificado antes de embarcar.</p></div>
+      <div class="feat"><div class="ico">☕</div><h4>A bordo</h4><p>Cafetería, Wi-Fi y free shop.</p></div>
+      <div class="feat"><div class="ico">🔄</div><h4>Cambios flexibles</h4><p>Modificá tu fecha desde la app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- App -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="app">
+      <div>
+        <h2>Tu pasaje, siempre en el bolsillo</h2>
+        <p>Comprá, hacé el check-in online y embarcá mostrando el código QR. Sin imprimir nada.</p>
+        <div class="stores">
+          <div class="store">Disponible en<b>App Store</b></div>
+          <div class="store">Disponible en<b>Google Play</b></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="screen">
+          <div class="screen-top"><small>Hola, Rodrigo 👋</small><div style="font-weight:800;font-size:18px">Tu próximo viaje</div></div>
+          <div class="ticket">
+            <div class="ticket-route">
+              <div>BUE<span>08:30</span></div>
+              <div style="font-size:16px;color:var(--sun)">⛴ ─ ─</div>
+              <div style="text-align:right">COL<span>09:45</span></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:10px">
+              <span>Asiento 14B</span><span>Turista</span><span>2 pax</span>
+            </div>
+            <div class="qr"></div>
+            <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:8px">Mostrá este código al embarcar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="logo" style="margin-bottom:12px"><div class="logo-mark" style="width:30px;height:30px">⛴</div><span>Colonia <em>Express</em></span></div>
+        <p style="font-size:14px;opacity:.75;max-width:280px">Uniendo las dos orillas del Río de la Plata.</p>
+      </div>
+      <div><h5>Viajar</h5><ul><li>Destinos</li><li>Horarios</li><li>Paquetes</li><li>Vehículos</li></ul></div>
+      <div><h5>Ayuda</h5><ul><li>Preguntas frecuentes</li><li>Documentación</li><li>Equipaje</li><li>Contacto</li></ul></div>
+      <div><h5>Terminales</h5><ul><li>Buenos Aires</li><li>Colonia</li><li>Montevideo</li></ul></div>
+    </div>
+    <div class="copy"><span>Mockup conceptual · 2026</span><span>Términos · Privacidad · Botón de arrepentimiento</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const $ = id => document.getElementById(id);
+
+  // Fechas por defecto: hoy y +2 días
+  const fmt = d => d.toISOString().slice(0,10);
+  const hoy = new Date(); const vuelta = new Date(Date.now() + 2*864e5);
+  $('ida').value = fmt(hoy); $('ida').min = fmt(hoy);
+  $('vuelta').value = fmt(vuelta); $('vuelta').min = fmt(hoy);
+
+  // Tipo de viaje
+  $('tripType').addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    document.querySelectorAll('#tripType .chip').forEach(c => c.classList.remove('active'));
+    b.classList.add('active');
+    $('vueltaField').style.visibility = b.dataset.type === 'ida' ? 'hidden' : 'visible';
+  });
+
+  // Invertir origen/destino
+  $('swap').onclick = () => { const o = $('origen').value; $('origen').value = $('destino').value; $('destino').value = o; };
+
+  // Pasajeros (1–9)
+  let pax = 2;
+  const setPax = n => { pax = Math.min(9, Math.max(1, n)); $('paxN').textContent = pax; };
+  $('paxMinus').onclick = () => setPax(pax - 1);
+  $('paxPlus').onclick = () => setPax(pax + 1);
+
+  // Buscar (simulado)
+  function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3000); }
+  $('search').onclick = () => {
+    if ($('origen').value === $('destino').value) return toast('⚠️ El origen y el destino no pueden ser iguales');
+    toast(`🔎 Buscando ${$('origen').value} → ${$('destino').value} · ${pax} pasajero${pax>1?'s':''}`);
+  };
+</script>
+</body>
+</html>

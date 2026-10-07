@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pauta Colonia Express</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Colonia Express */
+    --navy:#0b2545; --navy-2:#13315c; --sea:#2f80c8; --sun:#ff7a2f; --sun-2:#ffb27a;
+    /* Conexión con Vos */
+    --cream:#f7ebe5; --wine:#5a1a2e; --wine-2:#7a1f3d; --coral:#f0525a; --ink:#3a2a2f; --muted:#7a6a6f; --line:#e6d6cf;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Roboto,system-ui,sans-serif;background:#efe6e1;color:var(--ink);line-height:1.45}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* ---------- Encabezado de la propuesta ---------- */
+  .brief{background:var(--wine);color:#fff;padding:36px 0}
+  .brief small{letter-spacing:2px;text-transform:uppercase;font-weight:700;font-size:12px;color:#ffb3b8}
+  .brief h1{font-family:"Playfair Display",serif;font-size:clamp(28px,4vw,42px);margin:6px 0 10px}
+  .brief p{max-width:760px;opacity:.9}
+  .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .kpi{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:10px 14px;font-size:14px}
+  .kpi b{display:block;font-size:16px}
+
+  h2.sec{font-family:"Playfair Display",serif;font-size:28px;color:var(--wine);margin:44px 0 6px}
+  p.sub{color:var(--muted);margin-bottom:20px}
+  .label{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+
+  /* ---------- Piezas: base común ---------- */
+  .ad{position:relative;overflow:hidden;font-family:"Plus Jakarta Sans",sans-serif;color:#fff;
+      background:linear-gradient(170deg,var(--navy) 0%,var(--navy-2) 45%,#2f6fb5 75%,var(--sun-2) 100%);
+      box-shadow:0 10px 30px rgba(58,20,30,.18)}
+  .ad .tag-pub{position:absolute;top:6px;right:8px;font-size:9px;letter-spacing:1.5px;opacity:.6;font-family:Roboto}
+  .ad .brand{font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:6px}
+  .ad .brand em{font-style:normal;color:var(--sun-2)}
+  .ad .kicker{color:var(--sun-2);font-weight:700;text-transform:uppercase;letter-spacing:1.2px}
+  .ad h3{font-family:"Playfair Display",serif;line-height:1.08;font-weight:700}
+  .ad h3 i{color:var(--sun-2)}
+  .ad .cta{display:inline-block;text-decoration:none;background:var(--sun);color:#fff;font-weight:800;border-radius:999px;text-align:center;cursor:pointer;transition:.15s}
+  .ad .cta:hover{background:#f0661a;transform:translateY(-1px)}
+  .ad .price{font-weight:800}
+  .ad .price small{font-weight:600;opacity:.8}
+  .ad .fine{opacity:.65}
+  .ship svg{display:block;width:100%}
+  .code{display:inline-block;border:1.5px dashed var(--sun-2);border-radius:8px;font-weight:800;letter-spacing:1px}
+
+  /* Skyscraper 160x600 (como la columna lateral del portal) */
+  .sky{width:160px;height:600px;border-radius:18px;padding:22px 14px 16px;display:flex;flex-direction:column;text-align:center}
+  .sky .brand{justify-content:center;font-size:14px;margin-top:6px}
+  .sky .kicker{font-size:10px;margin-top:18px}
+  .sky h3{font-size:25px;margin-top:8px}
+  .sky p{font-size:13px;opacity:.9;margin-top:10px}
+  .sky .ship{margin-top:auto}
+  .sky .price{font-size:13px;margin:10px 0 4px}
+  .sky .price b{font-size:22px;display:block}
+  .sky .code{font-size:12px;padding:4px 8px;margin:6px auto 12px}
+  .sky .cta{padding:11px 0;font-size:14px;width:100%}
+
+  /* Medium rectangle 300x250 */
+  .mrec{width:300px;height:250px;border-radius:16px;padding:18px}
+  .mrec .brand{font-size:13px}
+  .mrec .kicker{font-size:10px;margin-top:12px}
+  .mrec h3{font-size:23px;margin-top:4px;max-width:165px}
+  .mrec .row{position:absolute;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;align-items:flex-end}
+  .mrec .price{font-size:12px}.mrec .price b{font-size:20px;display:block}
+  .mrec .cta{padding:9px 16px;font-size:13px}
+  .mrec .ship{position:absolute;right:-8px;top:96px;width:125px;opacity:.95}
+
+  /* Leaderboard 728x90 */
+  .leader{width:728px;height:90px;border-radius:14px;padding:0 20px;display:flex;align-items:center;gap:18px;
+          background:linear-gradient(90deg,var(--navy) 0%,var(--navy-2) 55%,#2f6fb5 85%,var(--sun-2) 120%)}
+  .leader .brand{font-size:15px;flex:none}
+  .leader .sep{width:1px;height:46px;background:rgba(255,255,255,.25)}
+  .leader h3{font-size:22px;flex:1}
+  .leader .kicker{font-size:10px;display:block;margin-bottom:2px;font-family:"Plus Jakarta Sans"}
+  .leader .price{font-size:12px;text-align:right;flex:none}.leader .price b{font-size:20px;display:block}
+  .leader .cta{padding:10px 18px;font-size:14px;flex:none}
+
+  /* Mobile 320x100 */
+  .mob{width:320px;height:100px;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+  .mob .ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--sun),var(--sun-2));display:grid;place-items:center;flex:none;font-size:22px}
+  .mob h3{font-size:17px}
+  .mob .fine{font-size:11px;margin-top:2px}
+  .mob .cta{padding:8px 12px;font-size:12px;flex:none}
+
+  .grid{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+  .scroll-x{overflow-x:auto;padding-bottom:6px}
+
+  /* ---------- Preview dentro del portal ---------- */
+  .portal{background:var(--cream);border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px rgba(58,20,30,.15)}
+  .browser{background:#e9dcd5;padding:10px 14px;display:flex;gap:6px;align-items:center}
+  .browser i{width:11px;height:11px;border-radius:50%;background:#d5c3bb;display:inline-block}
+  .browser span{margin-left:12px;background:#fff;border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted)}
+  .p-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);padding:12px 24px;border-bottom:1px solid var(--line)}
+  .p-logo{text-align:center;padding:18px 0 8px}
+  .p-logo .v{font-family:"Playfair Display",serif;font-style:italic;color:var(--coral);font-size:64px;line-height:1}
+  .p-logo .c{font-size:13px;letter-spacing:2px;color:var(--ink)}
+  .p-ed{text-align:center;font-size:11px;font-weight:700;letter-spacing:2px;padding:8px 0 14px;border-bottom:2px solid var(--wine)}
+  .p-nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:14px;font-weight:500;color:#4a3a3f;border-bottom:1px solid var(--line);font-size:15px}
+  .p-nav .on{color:#c8344f}
+  .p-body{display:grid;grid-template-columns:1fr 160px;gap:24px;padding:24px}
+  .p-hero{background:linear-gradient(135deg,var(--wine),var(--wine-2));color:#fff;border-radius:20px;padding:26px}
+  .p-hero small{color:#ffb3b8;font-weight:700;letter-spacing:1.5px;font-size:11px}
+  .p-hero h4{font-size:30px;font-weight:900;margin:6px 0}
+  .p-hero p{opacity:.85;max-width:460px}
+  .p-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  .p-card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .p-card .img{height:90px}
+  .p-card div.t{padding:10px 12px;font-size:14px;font-weight:700}
+  .p-card div.t small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+  .p-card.native{border:2px solid var(--sun)}
+  .p-card.native .t small.spon{color:var(--sun);font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:10px}
+  .p-leader{margin:20px 0 0;display:flex;justify-content:center}
+  .p-side .label{text-align:center}
+
+  /* Tabla de formatos */
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;font-size:14px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:var(--wine);color:#fff;font-weight:500;font-size:13px}
+  .copybox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:16px}
+  .copybox b{color:var(--wine)}
+  footer{padding:40px 0;color:var(--muted);font-size:12px;text-align:center}
+
+  @media (max-width:900px){
+    .p-body{grid-template-columns:1fr}
+    .p-side{display:none}
+    .p-cards{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 16px}
+    .p-cards{grid-template-columns:1fr}
+    .p-nav{gap:12px;font-size:13px}
+    .p-hero h4{font-size:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG reutilizable del barco -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="barco" viewBox="0 0 400 150">
+    <path d="M0,128 C60,116 120,140 200,128 C280,116 340,140 400,128 L400,150 L0,150 Z" fill="rgba(255,255,255,.18)"/>
+    <path d="M20 95 L380 95 L345 128 L55 128 Z" fill="#fff"/>
+    <path d="M70 95 L90 60 L300 60 L330 95 Z" fill="#e8f1fb"/>
+    <rect x="120" y="40" width="150" height="22" rx="6" fill="#fff"/>
+    <g fill="#0b2545"><rect x="100" y="70" width="18" height="12" rx="3"/><rect x="126" y="70" width="18" height="12" rx="3"/><rect x="152" y="70" width="18" height="12" rx="3"/><rect x="178" y="70" width="18" height="12" rx="3"/><rect x="204" y="70" width="18" height="12" rx="3"/><rect x="230" y="70" width="18" height="12" rx="3"/><rect x="256" y="70" width="18" height="12" rx="3"/></g>
+    <path d="M30 110 L370 110" stroke="#ff7a2f" stroke-width="5"/>
+  </symbol>
+</svg>
+
+<div class="brief">
+  <div class="wrap">
+    <small>Propuesta de pauta · Mockup</small>
+    <h1>Colonia Express × Conexión con Vos</h1>
+    <p>Campaña para la <b>Edición Especial Día de la Madre (domingo 18 de octubre)</b> dentro de la sección <b>Escapadas &amp; Travel</b>. El concepto continúa el mensaje editorial del portal: <i>“Regalale una escapada, no un objeto.”</i></p>
+    <div class="kpis">
+      <div class="kpi"><b>Vigencia</b>7 → 18 de octubre</div>
+      <div class="kpi"><b>Sección</b>Escapadas &amp; Travel + Home</div>
+      <div class="kpi"><b>Código</b>MAMA-CXV (tracking)</div>
+      <div class="kpi"><b>Destino del clic</b>Landing Colonia Express</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== PIEZAS ===== -->
+  <h2 class="sec">Piezas de la campaña</h2>
+  <p class="sub">Paleta de Colonia Express (azul río + naranja atardecer) con la tipografía serif del portal para que la publicidad se sienta parte de la edición.</p>
+
+  <div class="grid">
+    <div>
+      <div class="label">Lateral 160×600</div>
+      <div class="ad sky">
+        <span class="tag-pub">PUBLICIDAD</span>
+        <div class="brand">⛴ Colonia <em>Express</em></div>
+        <div class="kicker">Día de la Madre</div>
+        <h3>Regalale a mamá <i>una tarde en Colonia</i></h3>
+        <p>Cruzá el río en 1 h 15 min. Calles empedradas, atardecer y almuerzo frente al agua.</p>
+        <div class="ship"><svg viewBox="0 0 400 150"><use href="#barco"/></svg></div>
+        <div class="price"><small>Ida y vuelta desde</small><b>USD 69</b></div>
+        <span class="code">MAMA-CXV</span>
+        <a class="cta" href="index.html">Reservar</a>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <div>
+        <div class="label">Rectángulo 300×250</div>
+        <div class="ad mrec">
+          <span class="tag-pub">PUBLICIDAD</span>
+          <div class="brand">⛴ Colonia <em>Express</em></div>
+          <div class="kicker">Especial Día de la Madre</div>
+          <h3>Una escapada <i>de a dos</i> al otro lado del río</h3>
+          <div class="ship"><svg viewBox="0 0 400 150"><use href="#barco"/></svg></div>
+          <div class="row">
+            <div class="price"><small>2 pasajes ida y vuelta</small><b>USD 129</b></div>
+            <a class="cta" href="index.html">Ver salidas</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="label">Mobile 320×100</div>
+        <div class="ad mob">
+          <span class="tag-pub">PUBLICIDAD</span>
+          <div class="ico">⛴</div>
+          <div style="flex:1">
+            <h3>Mamá merece Colonia</h3>
+            <div class="fine">-15% con MAMA-CXV · hasta el 18/10</div>
+          </div>
+          <a class="cta" href="index.html">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:28px">
+    <div class="label">Banner horizontal 728×90</div>
+    <div class="scroll-x">
+      <div class="ad leader">
+        <span class="tag-pub">PUBLICIDAD</span>
+        <div class="brand">⛴ Colonia <em>Express</em></div>
+        <div class="sep"></div>
+        <h3><span class="kicker">Día de la Madre · 18/10</span>Regalale una escapada a <i>Colonia</i></h3>
+        <div class="price"><small>Desde</small><b>USD 69</b></div>
+        <a class="cta" href="index.html">Reservar</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PREVIEW EN EL PORTAL ===== -->
+  <h2 class="sec">Cómo se ve en Conexión con Vos</h2>
+  <p class="sub">Ubicación sugerida: columna lateral fija, nota patrocinada dentro de las ideas para mamá y banner horizontal debajo del destacado.</p>
+
+  <div class="portal">
+    <div class="browser"><i></i><i></i><i></i><span>conexionconvos.com/escapadas-travel</span></div>
+    <div class="p-top"><span>Miércoles, 7 de octubre de 2026</span><span>Portal internacional de estilo de vida</span></div>
+    <div class="p-logo"><span class="c">CONEXIÓN CON</span><div class="v">Vos</div></div>
+    <div class="p-ed">EDICIÓN ESPECIAL · DÍA DE LA MADRE · DOMINGO 18 DE OCTUBRE</div>
+    <div class="p-nav"><span>Home</span><span>Bienestar &amp; Salud</span><span>Moda</span><span>Decoración</span><span>Gastronomía</span><span class="on">Escapadas &amp; Travel</span><span>Publicidad</span><span>Contacto</span></div>
+
+    <div class="p-body">
+      <div>
+        <div class="p-hero">
+          <small>ESPECIAL DÍA DE LA MADRE · FALTAN 11 DÍAS</small>
+          <h4>Regalale una escapada, no un objeto.</h4>
+          <p>Un fin de semana largo, una cabaña, un viaje de a dos: planes para que mamá desconecte.</p>
+        </div>
+
+        <div class="p-leader scroll-x">
+          <div class="ad leader">
+            <span class="tag-pub">PUBLICIDAD</span>
+            <div class="brand">⛴ Colonia <em>Express</em></div>
+            <div class="sep"></div>
+            <h3><span class="kicker">Día de la Madre · 18/10</span>Regalale una escapada a <i>Colonia</i></h3>
+            <div class="price"><small>Desde</small><b>USD 69</b></div>
+            <a class="cta" href="index.html">Reservar</a>
+          </div>
+        </div>
+
+        <div class="p-cards">
+          <div class="p-card"><div class="img" style="background:linear-gradient(135deg,#c9e4de,#6fb3a5)"></div><div class="t">Spa de día en las sierras<small>Bienestar · 4 min</small></div></div>
+          <div class="p-card native"><div class="img" style="background:linear-gradient(135deg,#f2b880,#c96d3a 60%,#0b2545)"></div><div class="t"><small class="spon">Contenido patrocinado</small>24 horas en Colonia con mamá: el itinerario perfecto<small>Con Colonia Express</small></div></div>
+          <div class="p-card"><div class="img" style="background:linear-gradient(135deg,#e7c6d0,#a14a68)"></div><div class="t">Cabañas para dos cerca de BA<small>Escapadas · 6 min</small></div></div>
+        </div>
+      </div>
+
+      <div class="p-side">
+        <div class="label">Columna lateral</div>
+        <div class="ad sky">
+          <span class="tag-pub">PUBLICIDAD</span>
+          <div class="brand">⛴ Colonia <em>Express</em></div>
+          <div class="kicker">Día de la Madre</div>
+          <h3>Regalale a mamá <i>una tarde en Colonia</i></h3>
+          <p>Cruzá el río en 1 h 15 min. Calles empedradas, atardecer y almuerzo frente al agua.</p>
+          <div class="ship"><svg viewBox="0 0 400 150"><use href="#barco"/></svg></div>
+          <div class="price"><small>Ida y vuelta desde</small><b>USD 69</b></div>
+          <span class="code">MAMA-CXV</span>
+          <a class="cta" href="index.html">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FICHA ===== -->
+  <h2 class="sec">Ficha de la pauta</h2>
+  <p class="sub">Tabla para presentarle al cliente (los valores son de ejemplo, ajustalos a tu tarifario).</p>
+  <div class="scroll-x">
+    <table>
+      <tr><th>Formato</th><th>Medida</th><th>Ubicación</th><th>Dispositivo</th></tr>
+      <tr><td>Lateral fijo</td><td>160×600</td><td>Columna derecha · todas las secciones</td><td>Desktop</td></tr>
+      <tr><td>Banner horizontal</td><td>728×90</td><td>Debajo del destacado de Escapadas &amp; Travel</td><td>Desktop / tablet</td></tr>
+      <tr><td>Rectángulo</td><td>300×250</td><td>Entre notas · Home</td><td>Todos</td></tr>
+      <tr><td>Mobile</td><td>320×100</td><td>Sticky inferior</td><td>Mobile</td></tr>
+      <tr><td>Nota patrocinada</td><td>Artículo</td><td>“24 horas en Colonia con mamá”</td><td>Todos</td></tr>
+    </table>
+  </div>
+
+  <div class="copybox">
+    <p><b>Titular principal:</b> Regalale a mamá una tarde en Colonia.</p>
+    <p><b>Alternativas:</b> Mamá merece Colonia · Una escapada de a dos al otro lado del río · El mejor regalo cruza el río.</p>
+    <p><b>Llamado a la acción:</b> Reservar / Ver salidas.</p>
+    <p><b>Mensaje para WhatsApp:</b> “Hola 👋 Vi en Conexión con Vos la promo de Colonia Express por el Día de la Madre (código MAMA-CXV). ¿Me pasan salidas para el finde del 18?”</p>
+  </div>
+</div>
+
+<footer>Mockup de propuesta comercial · Precios, códigos y descuentos de ejemplo · No es material oficial de Colonia Express hasta su aprobación.</footer>
+</body>
+</html>
