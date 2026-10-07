@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conexión con Vos – Pauta Colonia Express</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f7ebe5;--coral:#f0525a;--wine:#5c1a30;--wine-2:#6e1f3a;--rose:#c8344f;--ink:#3b2a30;--muted:#6f6266;--line:#e3d3cc;--pink:#ffb3bd}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Roboto,sans-serif;background:var(--cream);color:var(--ink)}
+  .wrap{max-width:1130px;margin:0 auto;padding:0 20px}
+  img{display:block;max-width:100%}
+
+  .topbar{display:flex;justify-content:space-between;font-size:13px;font-weight:500;color:var(--muted);padding:10px 0;border-bottom:1px solid var(--line)}
+  .masthead{display:flex;align-items:center;justify-content:center;gap:40px;padding:18px 0 4px}
+  .logo{position:relative;width:360px;height:160px}
+  .logo .v{position:absolute;left:0;top:-14px;font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:190px;line-height:1;color:var(--coral)}
+  .logo .os{position:absolute;left:150px;top:46px;font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:118px;line-height:1;color:var(--coral)}
+  .logo .cc{position:absolute;left:162px;top:22px;font-size:24px;letter-spacing:1px;color:#2c2226}
+  .flower{width:80px;flex:none}
+  .edition{display:flex;align-items:center;gap:16px;font-size:12px;font-weight:700;letter-spacing:2.2px;padding:6px 0 16px}
+  .edition:before,.edition:after{content:"";flex:1;height:1px;background:var(--wine);opacity:.5}
+  nav{border-top:2px solid var(--wine);border-bottom:1px solid var(--line);background:var(--cream)}
+  nav .wrap{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;padding:18px 20px;font-size:16px;font-weight:500;color:#4b3f43}
+  nav .on{color:var(--rose)}
+
+  /* Hero editorial (igual al portal) */
+  .hero{margin:36px 0 0;background:linear-gradient(120deg,var(--wine),var(--wine-2));border-radius:26px;color:#fff;display:grid;grid-template-columns:110px 1fr 170px;gap:24px;align-items:center;padding:34px 40px;position:relative}
+  .hero small{color:var(--pink);font-weight:700;letter-spacing:1.6px;font-size:13px}
+  .hero h1{font-size:40px;font-weight:900;line-height:1.1;margin:8px 0}
+  .hero p{opacity:.85;font-size:17px;max-width:560px}
+  .hero .acts{display:flex;gap:22px;align-items:center;margin-top:20px}
+  .hero .acts a{font-weight:700;border-bottom:2px solid #fff;padding-bottom:3px}
+  .hero .acts .pill{background:#fff;color:var(--wine);border:0;border-radius:999px;padding:12px 20px}
+  .arch{width:150px;height:200px;border-radius:75px 75px 6px 6px;overflow:hidden;justify-self:end}
+  .arch img{width:100%;height:100%;object-fit:cover}
+  .arch-cap{font-size:12px;font-weight:700;text-align:center;margin-top:6px}
+
+  /* Zonas publicitarias */
+  .slot{position:relative}
+  .slot .tag{position:absolute;top:-22px;left:0;font-size:11px;font-weight:700;letter-spacing:1.4px;color:#a08f94}
+  .billboard{display:flex;justify-content:center;margin:56px 0 0}
+  .billboard img{width:970px;border-radius:16px;box-shadow:0 14px 34px rgba(11,74,154,.18)}
+
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:40px;margin:56px auto 0}
+  .sec-title{font-size:26px;font-weight:900;color:var(--wine);margin-bottom:4px}
+  .sec-sub{color:var(--muted);margin-bottom:20px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{background:#fff;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+  .card .ph{height:170px;overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover}
+  .card .t{padding:14px 16px 18px}
+  .card .cat{font-size:11px;font-weight:700;letter-spacing:1.4px;color:var(--rose);text-transform:uppercase}
+  .card h3{font-size:18px;line-height:1.25;margin:6px 0}
+  .card p{font-size:14px;color:var(--muted)}
+  .card.spon{border:2px solid #0b4a9a}
+  .card.spon .cat{color:#0b4a9a}
+  .card .by{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:10px}
+  .card .by b{font-style:italic;font-weight:900}
+  .card .by b .e{color:#e0262f} .card .by b .c{color:#0b4a9a}
+  .mrec-inline{display:flex;justify-content:center;align-items:center;background:#fff;border-radius:18px;border:1px dashed var(--line);padding:24px 0;position:relative}
+  .mrec-inline img{width:300px;border-radius:14px}
+  .side{position:sticky;top:20px;align-self:start}
+  .side img{width:300px;border-radius:18px;box-shadow:0 14px 34px rgba(11,74,154,.18)}
+
+  footer{margin-top:70px;border-top:2px solid var(--wine);padding:26px 0 40px;color:var(--muted);font-size:13px;text-align:center}
+  .wa{position:absolute;right:22px;top:470px;display:flex;align-items:center;gap:12px;z-index:20}
+  .wa span{background:#fff;padding:12px 16px;border-radius:14px;font-weight:700;font-size:15px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+  .wa i{width:56px;height:56px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+  .mob-sticky{display:none}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:760px){
+    .wrap{padding:0 16px}
+    .topbar span:last-child{display:none}
+    .flower{display:none}
+    .logo{transform:scale(.62);transform-origin:center top;height:100px;width:360px}
+    .masthead{padding-top:10px}
+    .edition{font-size:9px;letter-spacing:1.2px;text-align:center}
+    nav .wrap{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;white-space:nowrap;font-size:14px;padding:12px 16px}
+    .hero{grid-template-columns:1fr;padding:24px;border-radius:20px;margin-top:20px}
+    .hero .hf{display:none}
+    .hero h1{font-size:28px}
+    .hero p{font-size:15px}
+    .hero .acts{flex-wrap:wrap;gap:14px}
+    .arch{justify-self:center}
+    .billboard{display:none}
+    .grid{grid-template-columns:1fr;margin-top:36px}
+    .cards{grid-template-columns:1fr}
+    .side{display:none}
+    .wa{position:fixed;top:auto;bottom:120px;right:14px}.wa span{display:none}
+    .mob-sticky{display:flex;justify-content:center;position:fixed;left:0;right:0;bottom:0;background:rgba(247,235,229,.96);padding:8px 0 10px;border-top:1px solid var(--line);z-index:30}
+    .mob-sticky img{width:320px;border-radius:12px}
+    footer{padding-bottom:140px}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="flor" viewBox="0 0 80 150">
+    <g fill="none" stroke="#c8344f" stroke-width="1.6">
+      <circle cx="40" cy="38" r="7"/>
+      <path d="M40 31c-8-14-2-26 0-28 2 2 8 14 0 28zM40 45c-8 14-2 26 0 28 2-2 8-14 0-28zM33 38c-14-8-26-2-28 0 2 2 14 8 28 0zM47 38c14-8 26-2 28 0-2 2-14 8-28 0z"/>
+      <path d="M35 33c-12-4-18-14-17-17 3-1 13 5 17 17zM45 33c12-4 18-14 17-17-3-1-13 5-17 17zM35 43c-12 4-18 14-17 17 3 1 13-5 17-17zM45 43c12 4 18 14 17 17-3 1-13-5-17-17z"/>
+    </g>
+    <g fill="none" stroke="#8a6f74" stroke-width="1.6">
+      <path d="M40 74v72"/><path d="M40 112c-14-2-22-12-22-18 8 0 18 6 22 18zM40 104c12-4 20-14 20-20-8 0-16 8-20 20z"/>
+    </g>
+  </symbol>
+</svg>
+
+<div class="wrap">
+  <div class="topbar"><span>Miércoles, 7 de octubre de 2026</span><span>Portal internacional de estilo de vida</span></div>
+  <div class="masthead">
+    <svg class="flower"><use href="#flor"/></svg>
+    <div class="logo"><span class="v">V</span><span class="cc">CONEXIÓN CON</span><span class="os">os</span></div>
+    <svg class="flower"><use href="#flor"/></svg>
+  </div>
+  <div class="edition">EDICIÓN ESPECIAL · DÍA DE LA MADRE · DOMINGO 18 DE OCTUBRE</div>
+</div>
+<nav><div class="wrap"><span>Home</span><span>Bienestar &amp; Salud</span><span>Moda &amp; Tendencias</span><span>Decoración &amp; Arquitectura</span><span>Gastronomía de nivel</span><span class="on">Escapadas &amp; Travel</span><span>Publicidad</span><span>Contacto</span></div></nav>
+
+<div class="wrap">
+  <section class="hero">
+    <svg class="hf" width="90" height="160" viewBox="0 0 80 150" style="opacity:.85"><use href="#flor"/></svg>
+    <div>
+      <small>ESPECIAL DÍA DE LA MADRE · FALTAN 11 DÍAS</small>
+      <h1>Regalale una escapada, no un objeto.</h1>
+      <p>Un fin de semana largo, una cabaña, un viaje de a dos: planes para que mamá desconecte.</p>
+      <div class="acts"><a>Ver ideas para mamá →</a><a class="pill">Anunciá en esta sección</a></div>
+    </div>
+    <div><div class="arch"><img src="assets/rio-der.jpg" alt=""></div><div class="arch-cap">Un viaje para ella</div></div>
+  </section>
+
+  <!-- 970x250 debajo del destacado -->
+  <div class="billboard slot"><span class="tag">PUBLICIDAD</span><img src="png/colonia-express_970x250.png" alt="Colonia Express – Día de la Madre"></div>
+
+  <div class="grid">
+    <div>
+      <div class="sec-title">Ideas para regalarle a mamá</div>
+      <div class="sec-sub">Escapadas cortas para el domingo 18 y el fin de semana largo.</div>
+      <div class="cards">
+        <article class="card spon">
+          <div class="ph"><img src="assets/barco.jpg" alt=""></div>
+          <div class="t">
+            <div class="cat">Contenido patrocinado</div>
+            <h3>24 horas en Colonia con mamá: el itinerario perfecto</h3>
+            <p>Barco temprano, almuerzo frente al río y atardecer en el faro.</p>
+            <div class="by">Presentado por <b><span class="c">colonia</span><span class="e">express</span></b></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="ph"><img src="assets/rio-izq.jpg" alt=""></div>
+          <div class="t"><div class="cat">Escapadas</div><h3>Atardeceres sobre el Río de la Plata</h3><p>Los mejores miradores para ir de a dos.</p></div>
+        </article>
+        <div class="mrec-inline slot" style="grid-column:1/-1"><span class="tag" style="top:8px;left:14px">PUBLICIDAD</span><img src="png/colonia-express_300x250.png" alt="Colonia Express"></div>
+        <article class="card">
+          <div class="ph"><img src="assets/rio-der.jpg" alt=""></div>
+          <div class="t"><div class="cat">Bienestar</div><h3>Un día de spa para ella</h3><p>Circuitos de agua y masajes para desconectar.</p></div>
+        </article>
+        <article class="card">
+          <div class="ph" style="background:linear-gradient(135deg,#e7c6d0,#a14a68)"></div>
+          <div class="t"><div class="cat">Gastronomía de nivel</div><h3>Almuerzos de domingo para celebrarla</h3><p>Mesas con vista y menús especiales del 18.</p></div>
+        </article>
+      </div>
+    </div>
+    <!-- 300x600 lateral -->
+    <aside class="side slot"><span class="tag">PUBLICIDAD</span><img src="png/colonia-express_300x600.png" alt="Colonia Express – 40% OFF"></aside>
+  </div>
+</div>
+
+<footer>© 2026 Conexión con Vos · Portal internacional de estilo de vida · conexionconvos.com</footer>
+
+<div class="wa"><span>¿Querés anunciar? Escribinos</span><i><svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.4-.8-2.8-1.2-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.2 1.3z"/></svg></i></div>
+
+<!-- 320x100 sticky en celulares -->
+<div class="mob-sticky"><img src="png/colonia-express_320x100.png" alt="Colonia Express"></div>
+</body>
+</html>
